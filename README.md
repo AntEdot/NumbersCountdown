@@ -1,5 +1,5 @@
 # NumbersCountdown
-Calculates a solution for the numbersgame in the TV-show Countdown.
+Calculates **a** solution for the numbersgame in the TV-show Countdown.
 
 How:  
 java Countdown target num1 num2 num3 num4 num5 num6
