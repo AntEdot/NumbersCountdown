@@ -14,8 +14,6 @@ public class Countdown{
 
 		printAllRecursive(6,arr2);
 
-		runPerms(arr);
-
 		System.out.println("No answer found");
 	}
 
