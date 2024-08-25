@@ -1,5 +1,11 @@
+import java.util.ArrayList;
+import java.util.Scanner;
+
+
 public class Countdown{
 	public static int target;
+
+	static ArrayList<String> solutions = new ArrayList<String>();
 
 	public static void main(String[] args){
 		int arr[] = new int[7];
@@ -14,7 +20,17 @@ public class Countdown{
 
 		printAllRecursive(6,arr2);
 
-		System.out.println("No answer found");
+		System.out.println("Found " + solutions.size() + " solutions");
+		
+	
+		Scanner s = new Scanner(System.in);
+
+		for (i = 0; i < solutions.size(); i++) {
+			System.out.println(solutions.get(i));
+			s.nextLine();
+		}
+		
+		s.close();
 	}
 
 	static void printAllRecursive(
@@ -56,8 +72,9 @@ public class Countdown{
 							int[] arr = {a,b,c,d,e};
 							if(tryPerm(numbers,arr)){
 								//fancyPrint(numbers, arr);
-								fancyPrint2(numbers, arr);
-								System.exit(0);
+								//fancyPrint2(numbers, arr);
+								//System.exit(0);
+								solutions.add(toFancyString(numbers, arr));
 							}
 						}
 					}
@@ -115,6 +132,21 @@ public class Countdown{
 				
 		}
 		System.out.println(sb.toString());
+	}
+
+	static String toFancyString(int[] num, int[] op){
+		int res = num[0];
+		int oldRes = 0;
+		StringBuilder sb = new StringBuilder();
+		for(int i = 1; i < 6; i++){
+			if(op[i-1] > 0){
+				oldRes = res;
+				res = calcTwo(res, num[i], op[i-1]);
+				sb.append(oldRes + getOp(op[i-1]) + num[i] + " = " + res + "\n");
+			}
+		}
+
+		return sb.toString();
 	}
 
 	static String getOp(int op){
